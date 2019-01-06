@@ -17,9 +17,13 @@ const Route = use('Route');
 const Next = use('Adonis/Addons/Next');
 const handler = Next.getRequestHandler();
 
-Route.get('/api', ({ request }) => {
-  return { greeting: 'Hello world in JSON' };
-});
+Route.group(() => {
+
+    Route.post('register', 'UserController.register')
+    Route.post('login', 'UserController.login')
+    Route.post('verifyToken', 'UserController.verifyToken').middleware('auth')
+
+}).prefix('/api')
 
 // * Next Routes
 Route.get('/b', ({ request, response }) => {
