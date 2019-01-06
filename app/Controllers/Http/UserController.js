@@ -13,7 +13,15 @@ class UserController {
                 username,
             })
 
-            return await auth.generate(user)
+            let jwt = await auth.generate(user)
+            let user = await User.query().where('email', email).fetch()
+            return {
+                jwt,
+                user: {
+                    id: user.id,
+                    username: user.username
+                }
+            }
         } catch (error) {
             return { error: error.code }
         }
@@ -22,7 +30,15 @@ class UserController {
     async login({ request, auth }) {
         try {
             const { email, password } = request.all()
-            return await auth.attempt(email, password)
+            let jwt = await auth.attempt(email, password)
+            let user = await User.query().where('email', email).first()
+            return {
+                jwt,
+                user: {
+                    id: user.id,
+                    username: user.username
+                }
+            }
         } catch (error) {
             return { error: error.code }
         }
