@@ -19,7 +19,7 @@ class Index extends React.Component {
         <div>user 
           { user &&
             Object.keys(user).map(function(key) {
-              return <div className="whiteSpaceNoWrap">{key} : { user[key] }</div>
+              return <div className="whiteSpaceNoWrap" key={key}>{key} : { user[key] }</div>
            })
           }
         </div>
