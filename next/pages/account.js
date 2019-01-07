@@ -27,4 +27,4 @@ class Account extends Component {
 
 }
 
-export default withAuth()(Account)
+export default withAuth(Account)
