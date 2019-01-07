@@ -13,10 +13,15 @@ class Auth {
     }
 
     logout() {
-        Cookies.remove('jwt');
-        Cookies.remove('user');
+        try {
+            Cookies.remove('jwt');
+            Cookies.remove('user');
 
-        //TODO server logout
+            //TODO server logout
+            return true;
+        } catch (error) {
+            return false;
+        }
     }
 
     async login(email, password) {

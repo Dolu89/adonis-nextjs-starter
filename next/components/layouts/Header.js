@@ -13,13 +13,7 @@ import {
     DropdownToggle,
     DropdownMenu
 } from 'reactstrap';
-import auth from '../../services/auth';
-
-const Logout = () => {
-    return (
-        <span onClick={auth.logout} className="nav-link port-navbar-link clickable"> Logout </span>
-    )
-}
+import Auth from '../../services/auth';
 
 export default class Header extends React.Component {
     constructor(props) {
@@ -44,6 +38,13 @@ export default class Header extends React.Component {
         this.setState({
             dropdownOpen: !this.state.dropdownOpen
         });
+    }
+
+    logout() {
+        const isLoggedOut = Auth.logout()
+        if (isLoggedOut) {
+            window.location = '/'
+        }
     }
 
     render() {
@@ -73,9 +74,7 @@ export default class Header extends React.Component {
                             }
                             {isAuthenticated &&
                                 <NavItem className="port-navbar-item">
-                                    <Link href="/logout">
-                                        <a className={`nav-link port-navbar-link ${className}`}> Logout ({user.username}) </a>
-                                    </Link>
+                                    <a onClick={() => this.logout()} className='nav-link port-navbar-link port-nav-default' href=""> Logout ({user.username}) </a>
                                 </NavItem>
                             }
                         </Nav>
