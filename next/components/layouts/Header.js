@@ -66,11 +66,18 @@ export default class Header extends React.Component {
                                 </Link>
                             </NavItem>
                             {!isAuthenticated &&
-                                <NavItem className="port-navbar-item">
-                                    <Link href="/login">
-                                        <a className={`nav-link port-navbar-link ${className}`}> Login </a>
-                                    </Link>
-                                </NavItem>
+                                <React.Fragment>
+                                    <NavItem className="port-navbar-item">
+                                        <Link href="/login">
+                                            <a className={`nav-link port-navbar-link ${className}`}> Login </a>
+                                        </Link>
+                                    </NavItem>
+                                    <NavItem className="port-navbar-item">
+                                        <Link href="/register">
+                                            <a className={`nav-link port-navbar-link ${className}`}> Register </a>
+                                        </Link>
+                                    </NavItem>
+                                </React.Fragment>
                             }
                             {isAuthenticated &&
                                 <NavItem className="port-navbar-item">

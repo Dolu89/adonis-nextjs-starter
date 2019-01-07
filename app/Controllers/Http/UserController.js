@@ -14,7 +14,7 @@ class UserController {
             })
 
             let jwt = await auth.generate(user)
-            let user = await User.query().where('email', email).fetch()
+            
             return {
                 jwt,
                 user: {

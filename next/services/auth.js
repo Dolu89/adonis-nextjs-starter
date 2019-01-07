@@ -25,7 +25,7 @@ class Auth {
     }
 
     async login(email, password) {
-        const response = await axios.post('/api/login', { email, password })
+        const response = await axios.post(`${apiUrl}/api/login`, { email, password })
         const data = response.data
 
         //An error occured
@@ -40,17 +40,21 @@ class Auth {
     }
 
     async register(username, email, password) {
-        const response = await axios.post('/api/register', { username, email, password })
-        const data = response.data
+        try {
+            const response = await axios.post(`${apiUrl}/api/register`, { username, email, password })
+            const data = response.data
 
-        //An error occured
-        if (data.error) {
-            return { error: data.error }
-        }
-        else {
-            Cookies.set('jwt', data.jwt.token)
-            Cookies.set('user', JSON.stringify(data.user))
-            return data
+            //An error occured
+            if (data.error) {
+                return { error: data.error }
+            }
+            else {
+                Cookies.set('jwt', data.jwt.token)
+                Cookies.set('user', JSON.stringify(data.user))
+                return data
+            }
+        } catch (error) {
+            return {error}
         }
     }
 

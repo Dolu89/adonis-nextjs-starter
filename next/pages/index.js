@@ -12,7 +12,7 @@ class Index extends React.Component {
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
-    console.log(isAuthenticated)
+    
     return (
       <BaseLayout {...this.props.auth}>
         <div>isAuthenticated : {isAuthenticated.toString()}</div>
