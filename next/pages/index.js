@@ -12,11 +12,11 @@ class Index extends React.Component {
 
   render() {
     const { isAuthenticated, user } = this.props.auth;
-
+    console.log(isAuthenticated)
     return (
       <BaseLayout {...this.props.auth}>
-        <div>isAuthenticated {isAuthenticated}</div>
-        <div>user 
+        <div>isAuthenticated : {isAuthenticated.toString()}</div>
+        <div>user :
           { user &&
             Object.keys(user).map(function(key) {
               return <div className="whiteSpaceNoWrap" key={key}>{key} : { user[key] }</div>
