@@ -80,9 +80,17 @@ export default class Header extends React.Component {
                                 </React.Fragment>
                             }
                             {isAuthenticated &&
-                                <NavItem className="port-navbar-item">
-                                    <a onClick={() => this.logout()} className='nav-link port-navbar-link port-nav-default' href=""> Logout ({user.username}) </a>
-                                </NavItem>
+                                <React.Fragment>
+                                    <NavItem className="port-navbar-item">
+                                        <Link href="/account">
+                                            <a className={`nav-link port-navbar-link ${className}`}> Account </a>
+                                        </Link>
+                                    </NavItem>
+                                    <NavItem className="port-navbar-item">
+                                        <a onClick={() => this.logout()} className='nav-link port-navbar-link port-nav-default' href=""> Logout ({user.username}) </a>
+                                    </NavItem>
+                                </React.Fragment>
+
                             }
                         </Nav>
                     </Collapse>
