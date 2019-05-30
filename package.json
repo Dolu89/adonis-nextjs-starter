@@ -41,7 +41,7 @@
     "nodemon": "^1.18.9",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "reactstrap": "^7.0.2"
+    "reactstrap": "^8.0.0"
   },
   "devDependencies": {},
   "autoload": {
